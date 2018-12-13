@@ -1,0 +1,14 @@
+<section class="phx-hero">
+  <h1>Bitcoin Transactions Simulation</h1>
+
+  <form id="simulation" action="simulate">
+    Enter number of nodes: <br>
+    <input id="num_nodes" type="text" style="text-align:center" name="num_nodes" > <br>
+    Enter number of transactions: <br>
+    <input id="num_transactions" type="text" style="text-align:center" name="num_transactions" > <br>
+
+    <input type="submit" value="Submit">
+  </form>
+
+</section>
+
