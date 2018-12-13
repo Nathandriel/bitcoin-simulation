@@ -9,12 +9,17 @@ defmodule Dos42Web.SimulationController do
         GenServer.cast(Bitcoin.Manager, :reset)
         Process.unregister(Bitcoin.Manager)
         Process.exit(manager_pid, :kill)
-        Bitcoin.Manager.init(:start)
+        Bitcoin.Manager.start_link({[], []})
       else
-        Bitcoin.Manager.init(:start)
+        Bitcoin.Manager.start_link({[], []})
       end
 
       Bitcoin.Manager.simulate(num_nodes, num_transactions)
+
+
+      IO.inspect "Simulation done"
+      state = GenServer.call(Manager, :get_state)
+      IO.inspect state
 
       conn
 
