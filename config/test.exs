@@ -16,3 +16,4 @@ config :dos42, Dos42.Repo,
   database: "dos42_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+  server: true

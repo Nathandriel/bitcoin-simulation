@@ -4,6 +4,10 @@ defmodule PubSub do
   Provides methods for subscribing and publishing to topics.
   """
 
+  def init(args) do
+    {:ok, args}
+  end
+
   def start_link(opts) do
     GenServer.start_link(__MODULE__, :ok, opts)
   end

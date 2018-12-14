@@ -1,0 +1,35 @@
+<h1>Simulation done</h1>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>index</th>
+            <th>hash</th>
+            <th>previous_hash</th>
+            <th>nonce<th>
+            <th>timestamp</th>
+            <th>merkle_root</th>
+            
+        </tr>
+    </thead>
+
+    <tbody>
+        <%= for block <- @blockchain do %>
+            <tr>
+                <td><%= block.index %></td>
+                <td><%= block.hash %></td>
+                <td><%= block.previous_hash %></td>
+                <td><%= block.nonce %></td>
+                <td><%= block.timestamp %></td>
+                <td><%= block.merkle_root %></td>
+                
+                
+            </tr>
+        <% end %>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
+        <%# <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/sample.js") %>"></script> %>
+    </tbody>
+</table>
+

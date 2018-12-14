@@ -3,11 +3,11 @@ defmodule Dos42Web.SimulationController do
   
     def index(conn, %{"num_nodes" => num_nodes, "num_transactions" => num_transactions}) do
       
-      manager_pid = Process.whereis(Bitcoin.Manager)
+      manager_pid = Process.whereis(Manager)
       
       if (manager_pid !== nil) do
         GenServer.cast(Bitcoin.Manager, :reset)
-        Process.unregister(Bitcoin.Manager)
+        Process.unregister(Manager)
         Process.exit(manager_pid, :kill)
         Bitcoin.Manager.start_link({[], []})
       else
@@ -18,9 +18,11 @@ defmodule Dos42Web.SimulationController do
 
 
       IO.inspect "Simulation done"
-      state = GenServer.call(Manager, :get_state)
-      IO.inspect state
+      :timer.sleep(5000)
 
+      {nonces, blockchain} = GenServer.call(Manager, :get_state)
+
+      render(conn, "show.html", blockchain: blockchain)
       conn
 
     end

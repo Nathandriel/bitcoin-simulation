@@ -38,16 +38,18 @@ defmodule Bitcoin.Manager do
             node2 = Enum.random(nodes)
 
             # IO.inspect "before trans"
-            FullNode.print_state(node1)
-            FullNode.print_state(node2)
+            # FullNode.print_state(node1)
+            # FullNode.print_state(node2)
+
+            amount = Enum.random(1..10)
 
             #make transaction
-            FullNode.make_transaction(node1,node2,5)
+            FullNode.make_transaction(node1,node2, amount)
             :timer.sleep(1000)
 
             #after transaction
-            FullNode.print_state(node1)
-            FullNode.print_state(node2)
+            # FullNode.print_state(node1)
+            # FullNode.print_state(node2)
 
         end
     end

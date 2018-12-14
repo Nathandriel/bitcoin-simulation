@@ -1,7 +1,7 @@
 defmodule FullNode do
 
     @target  4
-    @transaction_limit  1
+    @transaction_limit  5
     @coinbase_reward 10
     use GenServer
 
@@ -188,8 +188,8 @@ defmodule FullNode do
     end
 
     def handle_call(:print_state, _from, state) do
-        IO.inspect state
-        {:reply, :printed, state}
+        
+        {:reply, state, state}
     end
 
 
